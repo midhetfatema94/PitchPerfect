@@ -31,7 +31,7 @@ class PlaySoundsViewController: UIViewController {
         case .Chipmunk:
             playSound(rate: 1000)
         case .Vader:
-            playSound(rate: -1000)
+            playSound(rate: -500)
         case .Echo:
             playSound(echo: true)
         case .Reverb:
@@ -44,6 +44,7 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func stopButtonPressed(_ sender: Any) {
         
         print("playing sound stopped")
+        stopAudio()
         
     }
     
