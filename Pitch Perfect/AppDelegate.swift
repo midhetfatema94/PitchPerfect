@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Pitch Perfect
-//
-//  Created by Chintan Shah on 22/02/16.
-//  Copyright © 2016 Chintan Shah. All rights reserved.
-//
 
 import UIKit
 
