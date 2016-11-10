@@ -13,6 +13,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         stopButton.isEnabled = false
     }
     
@@ -22,7 +26,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
         if flag {
             
-            self.performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         }
         else {
             
@@ -66,7 +70,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func recordAudio(_ sender: UIButton) {
         
-        recordingInProgress.isHidden = false
+        recordingInProgress.text = "Recording in Progress"
         stopButton.isEnabled = true
         recordButton.isEnabled = false
         
@@ -75,7 +79,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func stopRecording(_ sender: UIButton) {
         
-        recordingInProgress.isHidden = true
+        recordingInProgress.text = "Tap to Record"
         recordButton.isEnabled = true
         
         audioRecorder.stop()
