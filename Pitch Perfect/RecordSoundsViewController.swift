@@ -17,6 +17,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(animated)
         stopButton.isEnabled = false
     }
     
@@ -63,28 +64,25 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func recordAudio(_ sender: UIButton) {
         
-        recordingInProgress.text = "Recording in Progress"
-        stopButton.isEnabled = true
-        recordButton.isEnabled = false
-        
+        setStateForRecording(isRecording: true)
         startRecording()
     }
     
     @IBAction func stopRecording(_ sender: UIButton) {
         
-        recordingInProgress.text = "Tap to Record"
-        recordButton.isEnabled = true
-        
+        setStateForRecording(isRecording: false)
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
+    }
+    
+    func setStateForRecording(isRecording: Bool) {
+        
+        recordingInProgress.text = isRecording ? "Recording in Progress" : "Tap to Record"
+        recordButton.isEnabled = !isRecording
+        stopButton.isEnabled = isRecording
     }
 }
 
